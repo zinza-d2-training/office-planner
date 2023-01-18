@@ -1,15 +1,15 @@
 import { Shape } from 'react-konva';
 import { ComponentProps, FC } from 'react';
 
-export type DeskProps = ComponentProps<typeof Shape>;
+export type ChairProps = ComponentProps<typeof Shape>;
 
-export const Desk: FC<DeskProps> = (props) => {
+export const Chair: FC<ChairProps> = (props) => {
   return (
     <Shape
       // draggable
       sceneFunc={(context, shape) => {
         context.beginPath();
-        context.rect(0, 0, 250, 100);
+        context.rect(0, 0, 50, 50);
         context.closePath();
         context.fillStrokeShape(shape);
       }}
