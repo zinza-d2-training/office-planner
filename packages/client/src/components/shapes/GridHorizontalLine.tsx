@@ -1,5 +1,7 @@
 import { Shape } from 'react-konva';
 import { ComponentProps, FC } from 'react';
+import clsx from 'clsx';
+import { ShapeClassName } from '@client/configs';
 
 export type GridHorizontalLineProps = ComponentProps<typeof Shape> & {
   x1: number;
@@ -8,9 +10,17 @@ export type GridHorizontalLineProps = ComponentProps<typeof Shape> & {
   y2: number;
 };
 
-export const GridHorizontalLine: FC<GridHorizontalLineProps> = (props) => {
+export const GridHorizontalLine: FC<GridHorizontalLineProps> = ({
+  name,
+  ...props
+}) => {
   return (
     <Shape
+      name={clsx(
+        ShapeClassName.FixedShape,
+        ShapeClassName.GridHorizontalLine,
+        name
+      )}
       draggable
       sceneFunc={(context, shape) => {
         context.beginPath();

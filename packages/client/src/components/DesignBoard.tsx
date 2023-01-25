@@ -1,10 +1,13 @@
 import { Layer, Stage } from 'react-konva';
-import { Desk, DeskProps } from 'packages/client/components/shapes/Desk';
-import { GridVerticalLine } from 'packages/client/components/shapes/GridVerticalLine';
+import {
+  DeskProps,
+  GridHorizontalLine,
+  GridVerticalLine,
+} from '@client/components/shapes';
 import { useCallback, useMemo, useRef } from 'react';
-import { GridHorizontalLine } from 'packages/client/components/shapes/GridHorizontalLine';
+import { PersonalSeat } from '@client/components/objects';
 
-export const SeatPlanner = () => {
+export const DesignBoard = () => {
   const canvasWidth = 1000;
   const canvasHeight = 500;
   const gridSpacing = 50;
@@ -71,7 +74,20 @@ export const SeatPlanner = () => {
         ))}
       </Layer>
       <Layer>
-        <Desk onDragMove={handleDeskDragMove} onDragEnd={handleDeskDragEnd} />
+        <PersonalSeat
+          x={100}
+          y={100}
+          draggable
+          onDragMove={handleDeskDragMove}
+          onDragEnd={handleDeskDragEnd}
+        />
+        <PersonalSeat
+          x={400}
+          y={100}
+          draggable
+          onDragMove={handleDeskDragMove}
+          onDragEnd={handleDeskDragEnd}
+        />
       </Layer>
     </Stage>
   );
