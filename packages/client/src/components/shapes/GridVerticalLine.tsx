@@ -1,5 +1,7 @@
 import { Shape } from 'react-konva';
 import { ComponentProps, FC } from 'react';
+import clsx from 'clsx';
+import { ShapeClassName } from '@client/configs';
 
 export type GridVerticalLineProps = ComponentProps<typeof Shape> & {
   x1: number;
@@ -8,9 +10,17 @@ export type GridVerticalLineProps = ComponentProps<typeof Shape> & {
   y2: number;
 };
 
-export const GridVerticalLine: FC<GridVerticalLineProps> = (props) => {
+export const GridVerticalLine: FC<GridVerticalLineProps> = ({
+  name,
+  ...props
+}) => {
   return (
     <Shape
+      name={clsx(
+        ShapeClassName.FixedShape,
+        ShapeClassName.GridHorizontalLine,
+        name
+      )}
       draggable
       sceneFunc={(context, shape) => {
         context.beginPath();

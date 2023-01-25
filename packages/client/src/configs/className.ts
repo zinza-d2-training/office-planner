@@ -1,0 +1,17 @@
+export enum ShapeClassName {
+  Draggable = 'draggable',
+  Selected = 'Selected',
+  FixedShape = 'fixedShape',
+  FixedShapeElement = 'fixedShapeElement',
+  GridHorizontalLine = 'gridHorizontalLine',
+  GridVerticalLine = 'gridVerticalLine',
+  Desk = 'desk',
+  Chair = 'chair',
+  Keyboard = 'keyboard',
+  Monitor = 'monitor',
+  Mouse = 'mouse',
+  Cpu = 'cpu',
+  Laptop = 'laptop',
+  Charger = 'charger',
+  PersonalSeat = 'personalSeat',
+}
