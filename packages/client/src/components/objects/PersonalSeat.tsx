@@ -10,7 +10,13 @@ import {
 import Konva from 'konva';
 import clsx from 'clsx';
 import { ShapeClassName } from '@client/configs';
-import { Chair, Desk } from '@client/components/shapes';
+import {
+  Chair,
+  Desk,
+  Keyboard,
+  Monitor,
+  Mouse,
+} from '@client/components/shapes';
 
 export type PersonalSeatProps = ComponentProps<typeof Group>;
 export type PersonalSeatRef = Konva.Group;
@@ -46,6 +52,9 @@ export const PersonalSeat = forwardRef<PersonalSeatRef, PersonalSeatProps>(
         >
           <Chair x={82} y={90} />
           <Desk />
+          <Monitor />
+          <Mouse />
+          <Keyboard />
         </Group>
         {isSelected && (
           <Transformer
