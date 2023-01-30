@@ -55,7 +55,7 @@ export const PersonalSeat = forwardRef<PersonalSeatRef, PersonalSeatProps>(
               }
               return newBoundBox;
             }}
-            rotationSnaps={[0, 90, 180, 270]}
+            rotationSnaps={[0, 45, 90, 135, 180, 225, 270, 315, 360]}
             ref={trRef}
             resizeEnabled={false}
           />
