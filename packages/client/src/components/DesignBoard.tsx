@@ -71,7 +71,7 @@ export const DesignBoard = () => {
     y > 0 ? 0 : y < boundVertical ? boundVertical : y;
 
   const handleStageDragMove: StageProps['onDragMove'] = (e) => {
-    const stage = e.target;
+    const stage = e.currentTarget;
     const newX = calculateX(stage.x());
     const newY = calculateY(stage.y());
     stage.position({
@@ -82,7 +82,7 @@ export const DesignBoard = () => {
   };
 
   const handleStageDragEnd: StageProps['onDragEnd'] = (e) => {
-    const stage = e.target;
+    const stage = e.currentTarget;
     const newX = calculateX(stage.x());
     const newY = calculateY(stage.y());
     stage.position({
