@@ -1,0 +1,8 @@
+{
+  "name": "@office-planner/openapi-generator",
+  "version": "0.0.1",
+  "type": "commonjs",
+  "scripts": {
+    "gen": "docker compose up --build openapi-generator"
+  }
+}
