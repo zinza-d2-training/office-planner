@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "6.2.0",
+    "repository": {
+      "downloadUrl": "https://hungnp194-proxy.s3.ap-southeast-1.amazonaws.com/openapi-generator-cli-6.2.0.jar"
+    }
+  }
+}

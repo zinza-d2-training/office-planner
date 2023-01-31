@@ -1,0 +1,26 @@
+{
+  "name": "openapi-generator",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/openapi-generator/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/openapi-generator",
+        "main": "packages/openapi-generator/src/index.ts",
+        "tsConfig": "packages/openapi-generator/tsconfig.lib.json",
+        "assets": ["packages/openapi-generator/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/openapi-generator/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

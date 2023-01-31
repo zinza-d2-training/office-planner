@@ -15,7 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@client/*": ["packages/client/src/*"]
+      "@client/*": ["packages/client/src/*"],
+      "@constants/*": ["packages/constants/src/*"],
+      "@entities/*": ["packages/entities/src/*"],
+      "@openapi-generator/*": ["packages/openapi-generator/src/*"],
+      "@server/*": ["packages/server/src/*"],
+      "@utils/*": ["packages/utils/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

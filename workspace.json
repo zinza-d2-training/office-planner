@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "client": "packages/client",
+    "client-e2e": "packages/client-e2e",
+    "constants": "packages/constants",
+    "entities": "packages/entities",
+    "openapi-generator": "packages/openapi-generator",
+    "server": "packages/server",
+    "server-e2e": "packages/client-e2e",
+    "utils": "packages/utils"
+  }
+}
