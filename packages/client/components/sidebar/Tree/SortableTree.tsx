@@ -93,11 +93,9 @@ export function SortableTree({
       activeId ? [activeId, ...collapsedItems] : collapsedItems
     );
   }, [activeId, items]);
-
   const sortedIds = useMemo(() => flattenedItems.map(({ id }) => id), [
     flattenedItems,
   ]);
-
   const projected =
     activeId && overId
       ? getProjection(
@@ -151,13 +149,14 @@ export function SortableTree({
 
   >
     <SortableContext items={sortedIds} strategy={verticalListSortingStrategy}>
-      {flattenedItems.map(({ id, children, collapsed, depth, _id, type }) => (
+      {flattenedItems.map(({ id, children, collapsed, depth, _id, type, locked }) => (
         <SortableTreeItem
           key={id}
           id={id}
           _id={_id}
           type={type}
           value={`${id}`}
+          locked={locked}
           depth={id === activeId && projected ? projected.depth : depth}
           indentationWidth={indentationWidth}
           indicator={indicator}
@@ -181,6 +180,7 @@ export function SortableTree({
               _id={activeItem._id}
               type={activeItem.type}
               depth={activeItem.depth}
+              locked={activeItem.locked}
               clone
               childCount={getChildCount(items, activeId) + 1}
               value={activeId.toString()}
@@ -247,6 +247,13 @@ export function SortableTree({
       sortedItems.forEach((sorted, index) => sorted.index = index)
       const newActiveItem = sortedItems.find(item => item.id === active.id)
       const parentNewActiveItem = clonedItems.find(item => item.id === newActiveItem.parentId)
+      
+      // deny change locked group
+      if(newActiveItem?.locked) return
+      // deny move to locked group
+      if(parentNewActiveItem?.locked) return
+
+
       // get new position changed element
       const changePositionObject = sortedItems.filter(
         (sorted) => oldFlattendItem.find(clone => clone.id === sorted.id)?.index !== sorted.index && sorted.type !== "group")

@@ -13,6 +13,7 @@ export interface Group {
   id: string
   parent: string
   index: number | null
+  locked: boolean
 }
 
 export interface TreeItem {
@@ -23,6 +24,7 @@ export interface TreeItem {
   type?: string;
   position?: number[];
   index: number
+  locked: boolean
 }
 
 export type TreeItems = TreeItem[];

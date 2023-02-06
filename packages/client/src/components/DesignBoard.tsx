@@ -16,6 +16,7 @@ const rootGroup = {
   id: "0",
   parent: null,
   index: null,
+  locked: false,
 };
 
 export const DesignBoard = () => {
@@ -36,21 +37,25 @@ export const DesignBoard = () => {
         id: "0",
         parent: null,
         index: null,
+        locked: false,
       },
       {
         id: "1",
         parent: "0",
         index: 0,
+        locked: true,
       },
       {
         id: "2",
         parent: "1",
         index: 1,
+        locked: false,
       },
       {
         id: "3",
         parent: "0",
         index: 5,
+        locked: false,
       }
     ]
 

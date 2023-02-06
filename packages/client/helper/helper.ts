@@ -6,35 +6,26 @@ import { useCallback } from 'react';
 export const getTree = (
   currentGroup: Group,
   listGroup: Group[],
-  listObjects: ObjectShape[]
+  listObjects: ObjectShape[],
+  locked = undefined
 ) => {
   let children: TreeItems = [];
-  const sortedChildren = []
   for (const group of listGroup) {
     if (group.parent === currentGroup.id) {
-      // sortedChildren.push({
-      //   type: "group",
-      //   index: group.index,
-      //   group,
-      // })
-      children.push(getTree(group, listGroup, listObjects))
+      children.push(getTree(group, listGroup, listObjects, currentGroup.locked ||  locked))
     }
   };
 
   for (const object of listObjects) {
     if (object.group === currentGroup.id) {
-      // sortedChildren.push({
-      //   type: "object",
-      //   index: object.index,
-      //   object
-      // })
       children.push({
         id: `object-${object.id}`,
         _id: object.id,
         type: object.type,
         position: object.position,
         children: [],
-        index: object.index
+        index: object.index,
+        locked: currentGroup.locked || locked
       })
     }
   };
@@ -45,7 +36,8 @@ export const getTree = (
     type: "group",
     _id: currentGroup.id,
     children,
-    index: currentGroup.index
+    index: currentGroup.index,
+    locked: locked ?? currentGroup.locked
   } as TreeItem
 }
 

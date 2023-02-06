@@ -10,12 +10,13 @@ interface Props extends TreeItemProps {
   id: UniqueIdentifier;
   _id: UniqueIdentifier;
   type: string
+  locked: boolean
 }
 
 const animateLayoutChanges: AnimateLayoutChanges = ({isSorting, wasDragging}) =>
   isSorting || wasDragging ? false : true;
 
-export function SortableTreeItem({id, _id, type, depth, ...props}: Props) {
+export function SortableTreeItem({id, _id, type, depth, locked, ...props}: Props) {
   const {
     attributes,
     isDragging,
@@ -30,6 +31,7 @@ export function SortableTreeItem({id, _id, type, depth, ...props}: Props) {
     data: {
       _id,
       type,
+      locked
     },
     animateLayoutChanges,
   });
@@ -47,9 +49,12 @@ export function SortableTreeItem({id, _id, type, depth, ...props}: Props) {
       ghost={isDragging}
       disableSelection={iOS}
       disableInteraction={isSorting}
-      {...attributes}
-      {...listeners}
+      handleProps={{
+        ...attributes,
+        ...listeners,
+      }}
       {...props}
+      locked={locked}
     />
   );
 }
